@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package be.fiiw.exomeda;
 
 /**
  *
- * @author DaanB
+ * @author vando
  */
-public class Exomeda {
+class PlayerStatsView {
     
 }
