@@ -9,5 +9,9 @@ package be.fiiw.exomeda;
  * @author vando
  */
 class BulletGenerator {
+
+    void shootBullet(SpaceshipController aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
