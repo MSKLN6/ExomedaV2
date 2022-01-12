@@ -4,8 +4,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import model.Exomeda;
+import view.ExomedaView;
 
 public class ExomedaFXMLController {
+    
+    private Exomeda model;
+    private ExomedaView view;
 
     @FXML
     private ResourceBundle resources;
@@ -14,11 +19,12 @@ public class ExomedaFXMLController {
     private URL location;
 
     @FXML
-    private AnchorPane spelView;
+    private AnchorPane exomeda;
 
     @FXML
-    void initialize() {
-        
+    public void initialize() {
+        model = new Exomeda();
+        view  = new ExomedaView(model);
 
     }
 
