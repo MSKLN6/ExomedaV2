@@ -24,6 +24,5 @@ public class BeweegEntity extends TimerTask{
     public void run() {
         model.tick();
         this.controller.update();
-        Platform.runLater(controller::update);
     }
 }
