@@ -22,6 +22,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("ExomedaFXML"), App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
         stage.setScene(scene);
+        stage.setTitle("Exomeda - TheGame");
         stage.show();
         stage.setResizable(false);
     }
