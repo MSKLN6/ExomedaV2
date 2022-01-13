@@ -66,7 +66,7 @@ public class ExomedaFXMLController {
     public void start(){
         BeweegEntity task = new BeweegEntity(model, this);
         Timer t = new Timer(true);
-        t.scheduleAtFixedRate(task, 0, 1);
+        t.scheduleAtFixedRate(task, 0, 2);
     }
     
     public void updateViews(){
