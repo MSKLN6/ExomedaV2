@@ -38,6 +38,8 @@ public class ExomedaFXMLController {
 
     @FXML
     public void initialize() {
+        Player player = new Player();
+        
         this.playerInputs = new ArrayList<KeyboardInput>();
         model = new Exomeda();
         view  = new ExomedaView(model);
@@ -79,6 +81,5 @@ public class ExomedaFXMLController {
     }
 
     private void updateModels() {
-        
     }
 }
