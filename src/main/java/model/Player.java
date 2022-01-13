@@ -4,6 +4,8 @@
  */
 package model;
 
+import be.fiiw.exomeda.App;
+
 /**
  *
  * @author DaanB
@@ -18,7 +20,7 @@ public class Player {
     
     public Player() {
         this.health = 3;
-        this.position = new Vector (400,400);
+        this.position = new Vector (App.WINDOW_WIDTH/2, 500);
         this.velocity = new Vector(0,0);
         this.direction = new Vector(-1,0);
         this.speedAmount = new Vector(1,1);

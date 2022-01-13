@@ -21,7 +21,7 @@ public class ImageController {
     public static void preloadImages() {
         ImageController.images = new ArrayList<LoadedImage>();
         
-        ImageController.loadImage( LoadedImage.Type.PLAYER, "space ship.png" );
+        ImageController.loadImage( LoadedImage.Type.PLAYER, "space ship 1.0.png" );
         ImageController.loadImage( LoadedImage.Type.ENEMY_UFO, "Ufo.png" );
         ImageController.loadImage( LoadedImage.Type.ENEMY_BOSS, "Boss.png" );
         ImageController.loadImage( LoadedImage.Type.PROJECTILE, "Bullet player.png" );

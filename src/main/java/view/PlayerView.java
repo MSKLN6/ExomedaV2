@@ -18,8 +18,8 @@ import model.Player;
  */
 public class PlayerView extends Region{
     private Player model;
-    private static int PLAYER_WIDTH = 60;
-    private static int PLAYER_HEIGHT = 60;
+    private static int PLAYER_WIDTH = 75;
+    private static int PLAYER_HEIGHT = 75;
 
     public PlayerView(Player model) {
         
