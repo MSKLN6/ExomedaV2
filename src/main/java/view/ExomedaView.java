@@ -5,18 +5,22 @@
 package view;
 
 import javafx.scene.layout.Region;
-import model.Player;
+import model.Exomeda;
 
 /**
  *
  * @author DaanB
  */
-public class PlayerView extends Region{
-    private Player model;
+public class ExomedaView extends Region{
+    private Exomeda model;
 
-    public PlayerView(Player model) {
-        
+    public ExomedaView(Exomeda exomedaModel) {
+        model = exomedaModel;
+        update();
     }
     
+    public void update(){
+        getChildren().clear();
+    }
     
 }

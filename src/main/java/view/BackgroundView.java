@@ -41,8 +41,8 @@ public class BackgroundView extends Region {
     }
     
     public void update() {
-        if ( this.positie.y <  0.001 ) {
-            this.positie.y = 15200;
+        if ( this.positie.y <  App.WINDOW_HEIGHT ) {
+            this.positie.y = 10000;
         }
         else {
             this.positie.y -= 0.001;

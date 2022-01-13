@@ -5,23 +5,24 @@
 package be.fiiw.exomeda;
 
 import java.util.TimerTask;
+import javafx.application.Platform;
+import model.Exomeda;
 
 /**
  *
  * @author vando
  */
-class GameLoop extends TimerTask {
-
+public class BeweegEntity extends TimerTask{
+    private Exomeda model;
     private ExomedaFXMLController controller;
     
-    public static int TIME = (int) 2;
-    
-    public GameLoop(ExomedaFXMLController controller) {
-        this.controller = controller;
+    public BeweegEntity(Exomeda model, ExomedaFXMLController exomedaController) {
+        this.model = model;
+        this.controller = exomedaController;
     }
     
-    @Override
     public void run() {
-        this.controller.update();
+        model.tick();
+        Platform.runLater(controller::update);
     }
 }

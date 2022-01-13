@@ -6,11 +6,11 @@ package model;
 
 /**
  *
- * @author vando
+ * @author DaanB
  */
 public class Vector {
-    public int x;
-    public int y;
+    public int x;   //Public: vermijden van gebruik van teveel getters en setters
+    public int y;   //          vergemakkelijkt veel berekeningen 
     
     public Vector() {
         this.x = 0;

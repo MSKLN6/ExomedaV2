@@ -23,6 +23,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("ExomedaFXML"), App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     static void setRoot(String fxml) throws IOException {
