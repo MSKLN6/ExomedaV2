@@ -11,14 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import model.*;
-//import model.Exomeda;
-//import model.KeyboardInput;
-//import view.BackgroundView;
-//import view.ExomedaView;
 import view.*;
-//import view.BackgroundView;
-//import view.ExomedaView;
-//import view.PlayerView;
 
 public class ExomedaFXMLController {
     private Exomeda model;
@@ -62,7 +55,10 @@ public class ExomedaFXMLController {
     public void createPlayer(Vector position, KeyboardInput input){
         Player player = new Player();
         PlayerView playerView = new PlayerView(player);
+        
         this.exomeda.getChildren().add(playerView);
+        
+        this.playerInputs.add(input);
     }
     
     public void start(){
@@ -81,5 +77,6 @@ public class ExomedaFXMLController {
     }
 
     private void updateModels() {
+        
     }
 }

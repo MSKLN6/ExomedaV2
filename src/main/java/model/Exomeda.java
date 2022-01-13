@@ -8,9 +8,10 @@ package model;
  *
  * @author DaanB
  */
+
 public class Exomeda {
     
     public void tick(){
-        
+        ///
     }
 }
