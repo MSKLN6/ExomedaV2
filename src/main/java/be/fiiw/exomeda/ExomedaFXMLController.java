@@ -31,7 +31,7 @@ public class ExomedaFXMLController {
 
     @FXML
     public void initialize() {
-        Player player = new Player();
+        // Player player = new Player();
         
         this.playerInputs = new ArrayList<KeyboardInput>();
         model = new Exomeda();
@@ -53,7 +53,7 @@ public class ExomedaFXMLController {
     }
     
     public void createPlayer(Vector position, KeyboardInput input){
-        Player player = new Player();
+        Player player = new Player(position);
         PlayerView playerView = new PlayerView(player);
         
         this.exomeda.getChildren().add(playerView);
@@ -79,4 +79,16 @@ public class ExomedaFXMLController {
     private void updateModels() {
         
     }
+    
+//    private void keyPressed( KeyEvent evt ) {
+//        for ( KeyboardInput process : this.playerInputs ) {
+//            process.handleKeyPress( evt );
+//        }
+//    }
+//    
+//    private void keyReleased( KeyEvent evt ) {
+//        for ( KeyboardInput process : this.playerInputs ) {
+//            process.handleKeyRelease( evt );
+//        }
+//    }
 }

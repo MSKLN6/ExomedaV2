@@ -9,7 +9,7 @@ package model;
  * @author DaanB
  */
 public class Entity {
-    private Vector position;
+    protected Vector position;
     private Vector velocity; // current velocity
     private Vector direction;
 
@@ -22,6 +22,30 @@ public class Entity {
     public void update(){
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
+    }
+
+    public Vector getPosition() {
+        return position;
+    }
+
+    public void setPosition(Vector position) {
+        this.position = position;
+    }
+
+    public Vector getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(Vector velocity) {
+        this.velocity = velocity;
+    }
+
+    public Vector getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Vector direction) {
+        this.direction = direction;
     }
     
     

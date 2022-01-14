@@ -10,79 +10,28 @@ import be.fiiw.exomeda.App;
  *
  * @author DaanB
  */
-public class Player {
-    int health;
-    protected Vector position;
-    private Vector velocity;
-    private Vector direction;
-    private Vector speedAmount;
+public class Player extends Entity{
     
     
-    public Player() {
-        this.health = 3;
-        this.position = new Vector (App.WINDOW_WIDTH/2, 500);
-        this.velocity = new Vector(0,0);
-        this.direction = new Vector(-1,0);
-        this.speedAmount = new Vector(1,1);
-    }
-
-    public Player(int health, Vector position, Vector velocity, Vector direction, Vector speedAmount) {
-        this.health = health;
-        this.position = position;
-        this.velocity = velocity;
-        this.direction = direction;
-        this.speedAmount = speedAmount;
-    }
+//    public Player() {
+//        position = new Vector (App.WINDOW_WIDTH/2, 500);
+//        super(position);
+//        this.velocity = new Vector(0,0);
+//        this.direction = new Vector(-1,0);
+//        this.speedAmount = new Vector(1,1);
+//    }
     
-    
-    
-    
-    public void update() {
-        this.position.x += this.velocity.x * this.speedAmount.x;
-        this.position.y += this.velocity.y * this.speedAmount.y;
-    }
-    
-    public Vector getPosition() {
-        return position;
-    }
-
-    public void setPosition(Vector position) {
-        this.position = position;
-    }
-    
-    public Vector getDirection() {
-        return direction;
-    }
-
-    public void getDirection(Vector direction) {
-        this.direction = direction;
-    }
-    
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-    
-    public Vector getVelocity() {
-        return velocity;
-    }
-
-    public void setVelocity(Vector velocity) {
-        this.velocity = velocity;
-    }
-    
-    public Vector getSpeedAmount() {
-        return speedAmount;
-    }
-
-    public void setSpeedAmount(Vector speedAmount) {
-        this.speedAmount = speedAmount;
-    }
-    
-    public void beweegLinks(){
+    public Player(Vector position) {
+        super(position = new Vector (App.WINDOW_WIDTH/2, (int)Math.round(App.WINDOW_HEIGHT*0.70)));
         
+        this.getDirection().y = -1; // Mikt naar boven
+    }
+    
+    @Override
+    public void update() {
+        super.update();
+        
+        this.position.x = Math.max( 0, Math.min(this.position.x, App.WINDOW_WIDTH - 1));
+        this.position.y = Math.max( 0, Math.min(this.position.y, App.WINDOW_HEIGHT - 1));
     }
 }
