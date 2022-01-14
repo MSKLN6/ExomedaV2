@@ -26,6 +26,7 @@ public class PlayerInput {
         if ( this.getUp() ) {
             velocity.y = -1;
         }
+        
         else if ( this.getDown() ) {
             velocity.y = 1;
         }

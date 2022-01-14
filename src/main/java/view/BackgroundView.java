@@ -45,7 +45,7 @@ public class BackgroundView extends Region {
             this.positie.y = 24880;
         }
         else {
-            this.positie.y -= 0.001;
+            this.positie.y -= 1;
         }
         
         this.setTranslateY(- this.positie.y );

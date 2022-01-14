@@ -81,4 +81,8 @@ public class Player {
     public void setSpeedAmount(Vector speedAmount) {
         this.speedAmount = speedAmount;
     }
+    
+    public void beweegLinks(){
+        
+    }
 }
