@@ -12,11 +12,13 @@ public class Entity {
     protected Vector position;
     private Vector velocity; // current velocity
     private Vector direction;
+    private Vector enginePower;
 
     public Entity(Vector position) {
         this.position = position;
         this.velocity = new Vector(0,0);
         this.direction = new Vector(0,-1);
+        this.enginePower = new Vector(1,1);
     }
     
     public void update(){
@@ -46,6 +48,14 @@ public class Entity {
 
     public void setDirection(Vector direction) {
         this.direction = direction;
+    }
+    
+    public Vector getEnginePower() {
+        return enginePower;
+    }
+
+    public void setEnginePower(Vector enginePower) {
+        this.enginePower = enginePower;
     }
     
     

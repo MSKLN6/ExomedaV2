@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -13,27 +14,24 @@ import javafx.scene.paint.Color;
 import model.*;
 import view.*;
 
-public class ExomedaFXMLController {
+public class ExomedaFXMLController implements Initializable{
     private Exomeda model;
     private ExomedaView view;
     private ArrayList<KeyboardInput> playerInputs;
+    private ArrayList<PlayerController> playerControllers;
+    private ArrayList<PlayerView> playerViews;
     private BackgroundView background;
-    
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private AnchorPane exomeda;
 
-    @FXML
-    public void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
         // Player player = new Player();
         
+        this.playerViews = new ArrayList<PlayerView>();
         this.playerInputs = new ArrayList<KeyboardInput>();
+        this.playerControllers = new ArrayList<PlayerController>();
         model = new Exomeda();
         view  = new ExomedaView(model);
         
@@ -42,33 +40,33 @@ public class ExomedaFXMLController {
         this.background = new BackgroundView();
         this.exomeda.getChildren().add(this.background);
         
-        KeyboardInput playerInput = new KeyboardInput();
-        createPlayer(new Vector(100, 100), playerInput );
+        KeyboardInput playerInput = new KeyboardInput(KeyCode.UP, KeyCode.DOWN, KeyCode.LEFT, KeyCode.RIGHT);
+        this.newPlayer(new Vector(100, 100), playerInput );
 
-        exomeda.getChildren().add(view);
+        this.exomeda.getChildren().add(view);
         
-        exomeda.setFocusTraversable(true);
+        this.exomeda.setOnKeyPressed(this::keyPressed);
+        this.exomeda.setOnKeyReleased(this::keyReleased);
+        this.exomeda.setFocusTraversable(true);
         
-        start();
+        GameLoop gameLoop = new GameLoop(this);
+        
+        Timer t = new Timer();
+        t.scheduleAtFixedRate(gameLoop, 0, GameLoop.DELTA_TIME);
     }
     
-    public void createPlayer(Vector position, KeyboardInput input){
+    public void newPlayer(Vector position, KeyboardInput input){
         Player player = new Player(position);
+        player.setEnginePower( new Vector(5,5) );
         PlayerView playerView = new PlayerView(player);
         
+        playerView.tekenPlayer();
         this.exomeda.getChildren().add(playerView);
         
+        PlayerController playerController = new PlayerController(player, playerView, input);
+        
+        this.playerControllers.add(playerController);
         this.playerInputs.add(input);
-    }
-    
-    public void start(){
-        BeweegEntity task = new BeweegEntity(model, this);
-        Timer t = new Timer(true);
-        t.scheduleAtFixedRate(task, 0, 2);
-    }
-    
-    public void updateViews(){
-        this.background.update();
     }
     
     public void update() {
@@ -77,18 +75,33 @@ public class ExomedaFXMLController {
     }
 
     private void updateModels() {
-        
+        for (PlayerController pc : this.playerControllers ) {
+            pc.updateModel();
+        }        
     }
     
-//    private void keyPressed( KeyEvent evt ) {
-//        for ( KeyboardInput process : this.playerInputs ) {
-//            process.handleKeyPress( evt );
-//        }
-//    }
-//    
-//    private void keyReleased( KeyEvent evt ) {
-//        for ( KeyboardInput process : this.playerInputs ) {
-//            process.handleKeyRelease( evt );
-//        }
-//    }
+    public void updateViews(){
+        this.background.update();
+        for (PlayerController pc : this.playerControllers) {
+            pc.updateView();
+        }
+    }
+    
+    public void start(){
+        BeweegEntity task = new BeweegEntity(model, this);
+        Timer t = new Timer(true);
+        t.scheduleAtFixedRate(task, 0, 2);
+    }
+    
+    private void keyPressed( KeyEvent evt ) {
+        for ( KeyboardInput processor : this.playerInputs ) {
+            processor.handleKeyPress( evt );
+        }
+    }
+    
+    private void keyReleased( KeyEvent evt ) {
+        for ( KeyboardInput processor : this.playerInputs ) {
+            processor.handleKeyRelease( evt );
+        }
+    }    
 }

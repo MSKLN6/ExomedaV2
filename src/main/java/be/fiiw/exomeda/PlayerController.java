@@ -24,13 +24,13 @@ public class PlayerController {
     }
     
     public void updateModel() {
-        input.beweging(this.player); 
+        this.input.beweging(this.player); 
         
-        player.update();
+        this.player.update();
     }
     
-    public void updateViews() {
-        view.update();
+    public void updateView() {
+        this.view.update();
     }
     
     public Player getPlayer() {
