@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.Random;
+
 /**
  *
  * @author DaanB
@@ -13,6 +15,7 @@ public class Entity {
     private Vector velocity; // current velocity
     private Vector direction;
     private Vector enginePower;
+    Random random = new Random();
 
     public Entity(Vector position) {
         this.position = position;
@@ -58,5 +61,9 @@ public class Entity {
         this.enginePower = enginePower;
     }
     
+    public int randomX(){
+        int x = random.nextInt(1280);
+        return x;
+    }
     
 }

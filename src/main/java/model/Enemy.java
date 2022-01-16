@@ -5,17 +5,18 @@
 package model;
 
 import be.fiiw.exomeda.App;
+import java.util.Random;
 
 /**
  *
  * @author DaanB
  */
-public class Player extends Entity{
+public class Enemy extends Entity{
     
-    public Player(Vector position) {
-        super(position = new Vector (App.WINDOW_WIDTH/2, (int)Math.round(App.WINDOW_HEIGHT*0.70)));
-        
-        this.getDirection().y = -1; // Mikt naar boven
+    public Enemy(Vector position) {
+//        super(position = new Vector(new Random().nextInt(1280), 0));
+        super(position);
+        this.getDirection().y = 1; // Mikt naar beneden
     }
     
     @Override

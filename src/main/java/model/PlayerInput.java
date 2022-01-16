@@ -42,11 +42,11 @@ public class PlayerInput {
         velocity.y = 0;
 
         if (this.up()) {
-            velocity.y = -1;
+            velocity.y = -3;
         }
         
         else if (this.down()) {
-            velocity.y = 3;
+            velocity.y = 9;
         }
 
         if (this.left()) {

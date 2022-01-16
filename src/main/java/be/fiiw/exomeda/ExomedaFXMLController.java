@@ -2,6 +2,7 @@ package be.fiiw.exomeda;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import javafx.application.Platform;
@@ -14,24 +15,35 @@ import javafx.scene.paint.Color;
 import model.*;
 import view.*;
 
-public class ExomedaFXMLController implements Initializable{
+public class ExomedaFXMLController{
+    // Bepalen van overkoepelend model en view
     private Exomeda model;
     private ExomedaView view;
+    
+    // Bepalen van alle ArrayLists
     private ArrayList<KeyboardInput> playerInputs;
     private ArrayList<PlayerController> playerControllers;
     private ArrayList<PlayerView> playerViews;
+    private ArrayList<EnemyController> enemyControllers;
+    
+    // Bepalen van background
     private BackgroundView background;
+    
+    // Bepalen van enemy dependencies
+    private int enemyCount;
+    Random random = new Random();
+    
 
     @FXML
     private AnchorPane exomeda;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // Player player = new Player();
+    
+    @FXML
+    public void initialize() {
         
         this.playerViews = new ArrayList<PlayerView>();
         this.playerInputs = new ArrayList<KeyboardInput>();
         this.playerControllers = new ArrayList<PlayerController>();
+        this.enemyControllers = new ArrayList<EnemyController>();
         model = new Exomeda();
         view  = new ExomedaView(model);
         
@@ -52,7 +64,9 @@ public class ExomedaFXMLController implements Initializable{
         GameLoop gameLoop = new GameLoop(this);
         
         Timer t = new Timer();
-        t.scheduleAtFixedRate(gameLoop, 0, GameLoop.DELTA_TIME);
+        t.scheduleAtFixedRate(gameLoop, 0, gameLoop.getDELTA_TIME());
+        
+        this.spawnEnemy();
     }
     
     public void newPlayer(Vector position, KeyboardInput input){
@@ -67,6 +81,32 @@ public class ExomedaFXMLController implements Initializable{
         
         this.playerControllers.add(playerController);
         this.playerInputs.add(input);
+    }
+    
+    public void spawnEnemy(){
+        
+        while(enemyCount < 10){
+            int randomizer = random.nextInt(10);
+            // SLEEP METHOD
+            if (randomizer == 5){
+                newEnemy(new Vector(random.nextInt(12)*100+5,10));
+            }
+        }
+        
+    }
+    
+    public void newEnemy(Vector position){
+        Enemy enemy = new Enemy(position);
+        EnemyView enemyView = new EnemyView(enemy);
+        
+        enemyView.tekenEnemy();
+        this.exomeda.getChildren().add(enemyView);
+        
+        EnemyController enemyController = new EnemyController(enemy, enemyView);
+        
+        this.enemyControllers.add(enemyController);
+        
+        enemyCount += 1;
     }
     
     public void update() {

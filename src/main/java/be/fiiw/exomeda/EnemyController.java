@@ -11,36 +11,34 @@ import view.*;
  *
  * @author vando
  */
-public class PlayerController {
-    private Player player;
-    private PlayerView view;
-    private PlayerInput input;
+public class EnemyController {
+    private Enemy enemy;
+    private EnemyView view;
 
-    public PlayerController(Player player, PlayerView view, PlayerInput input) {
-        this.player = player;
+    public EnemyController(Enemy enemy, EnemyView view) {
+        this.enemy = enemy;
         this.view = view;
-        this.input = input;
     }
     
     public void updateModel() {
-        this.input.beweging(this.player); 
+//        this.input.beweging(this.player); 
         
-        this.player.update();
+        this.enemy.update();
     }
     
     public void updateView() {
         this.view.update();
     }
     
-    public Player getPlayer() {
-        return player;
+    public Enemy getEnemy() {
+        return enemy;
     }
 
-    public PlayerView getView() {
+    public EnemyView getView() {
         return view;
     }
 
-    public PlayerInput getInput() {
-        return input;
-    }
+//    public PlayerInput getInput() {
+//        return input;
+//    }
 }

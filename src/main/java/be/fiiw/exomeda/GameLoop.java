@@ -4,16 +4,20 @@ import java.util.TimerTask;
 
 /**
  *
- * @author u0143348
+ * @author DaanB
  */
 public class GameLoop extends TimerTask {
 
     private ExomedaFXMLController controller;
     
-    public static int DELTA_TIME = 16; // time in ms between ticks. 33 for ~30FPS, 16 for ~60FPS 
+    private static int DELTA_TIME = 16; // Tijd tussen elke tick [ms] 16ms~60FPS 
     
     public GameLoop(ExomedaFXMLController controller) {
         this.controller = controller;
+    }
+    
+    public int getDELTA_TIME(){
+        return this.DELTA_TIME;
     }
     
     @Override
