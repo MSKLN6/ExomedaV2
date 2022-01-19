@@ -31,8 +31,12 @@ public class EnemyView extends Region{
     }
     
     public void update() {
-        this.setTranslateX( this.model.getPosition().x );
-        this.setTranslateY( this.model.getPosition().y );
+        
+        int posX = model.getPosition().getX();
+        int posY = model.getPosition().getY();
+        
+        this.setTranslateX(posX);
+        this.setTranslateY(posY);
     }
     
     public void tekenEnemy() {

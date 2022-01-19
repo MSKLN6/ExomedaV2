@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class Entity {
     protected Vector position;
-    private Vector velocity; // current velocity
+    private Vector velocity;
     private Vector direction;
     private Vector enginePower;
     Random random = new Random();
@@ -24,9 +24,25 @@ public class Entity {
         this.enginePower = new Vector(1,1);
     }
     
+    public Entity(Vector position, Vector velocity) {
+        this.position = position;
+        this.velocity = velocity;
+        this.direction = new Vector(0,-1);
+        this.enginePower = new Vector(1,1);
+    }
+    
     public void update(){
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
+        int posX = position.getX();
+        int posY = position.getY();
+        
+        int velX = velocity.getX();
+        int velY = velocity.getY();
+        
+        posX += velX;
+        posY += velY;
+        
+        position.setX(posX);
+        position.setY(posY);
     }
 
     public Vector getPosition() {

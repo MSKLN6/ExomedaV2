@@ -17,47 +17,54 @@ public class KeyboardInput extends PlayerInput {
     private KeyCode left;
     private KeyCode right;
     private KeyCode fire;
+    private KeyCode boost;
     
-    public KeyboardInput(KeyCode up, KeyCode down, KeyCode left, KeyCode right) {
+    public KeyboardInput(KeyCode up, KeyCode down, KeyCode left, KeyCode right, KeyCode fire, KeyCode boost) {
         this.up = up;
         this.down = down;
         this.left = left;
         this.right = right;
+        this.fire = fire;
+        this.boost = boost;
     }
 
     public void handleKeyPress( KeyEvent e ) {
-        KeyCode code = e.getCode();
+        KeyCode key = e.getCode();
         
-        if ( code == this.up ) {
+        if ( key == this.up ) {
             this.Up = true;
         }
-        else if ( code == this.down ) {
+        else if ( key == this.down ) {
             this.Down = true;
         }
-        else if ( code == this.left ) {
+        else if ( key == this.left ) {
             this.Left = true;
         }
-        else if ( code == this.right ) {
+        else if ( key == this.right ) {
             this.Right = true;
+        }
+        else if ( key == this.fire ) {
+            this.Fire = true;
+        }
+        else if ( key == this.boost ) {
+            this.Boost = true;
         }
     }
     
     public void handleKeyRelease( KeyEvent e ) {
-        KeyCode code = e.getCode();
+        KeyCode key = e.getCode();
         
-        if ( code == this.up ) {
+        if ( key == this.up ) {
             this.Up = false;
         }
-        else if ( code == this.down ) {
+        else if ( key == this.down ) {
             this.Down = false;
         }
-        else if ( code == this.left ) {
+        else if ( key == this.left ) {
             this.Left = false;
         }
-        else if ( code == this.right ) {
+        else if ( key == this.right ) {
             this.Right = false;
         }
-        
-        // Note: firing is a special case that's handled in the fire() getter above
     }
 }

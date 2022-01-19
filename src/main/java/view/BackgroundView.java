@@ -41,14 +41,18 @@ public class BackgroundView extends Region {
     }
     
     public void update() {
-        if ( this.positie.y <  App.WINDOW_HEIGHT ) {
-            this.positie.y = 24880;
+        
+        int posX = positie.getX();
+        int posY = positie.getY();
+        
+        if (posY < App.WINDOW_HEIGHT){
+            positie.setY(24880);
         }
         else {
-            this.positie.y -= 12;
+            posY -= 12;
+            positie.setY(posY);
         }
-        
-        this.setTranslateY(- this.positie.y );
+        this.setTranslateY(- posY);
     }
 }
 

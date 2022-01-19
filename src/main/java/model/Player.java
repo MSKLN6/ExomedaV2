@@ -5,6 +5,7 @@
 package model;
 
 import be.fiiw.exomeda.App;
+import view.PlayerView;
 
 /**
  *
@@ -15,14 +16,22 @@ public class Player extends Entity{
     public Player(Vector position) {
         super(position = new Vector (App.WINDOW_WIDTH/2, (int)Math.round(App.WINDOW_HEIGHT*0.70)));
         
-        this.getDirection().y = -1; // Mikt naar boven
+        int dirY = getDirection().getY();
+        dirY = -1; // Mikt naar beneden
+        getDirection().setY(dirY);
     }
     
     @Override
     public void update() {
         super.update();
         
-        this.position.x = Math.max( 0, Math.min(this.position.x, App.WINDOW_WIDTH - 1));
-        this.position.y = Math.max( 0, Math.min(this.position.y, App.WINDOW_HEIGHT - 1));
+        int posX = position.getX();
+        int posY = position.getY();
+        
+        posX = Math.max(0, Math.min(posX, App.WINDOW_WIDTH - PlayerView.PLAYER_WIDTH));
+        posY = Math.max(0, Math.min(posY, App.WINDOW_HEIGHT - PlayerView.PLAYER_HEIGHT));
+        
+        position.setX(posX);
+        position.setY(posY);
     }
 }

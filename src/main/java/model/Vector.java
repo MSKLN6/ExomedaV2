@@ -9,8 +9,8 @@ package model;
  * @author DaanB
  */
 public class Vector {
-    public int x;   //Public: vermijden van gebruik van teveel getters en setters
-    public int y;   //          vergemakkelijkt veel berekeningen 
+    private int x;   //Public: vermijden van gebruik van teveel getters en setters
+    private int y;   //          vergemakkelijkt veel berekeningen 
     
     public Vector() {
         this.x = 0;
@@ -19,6 +19,22 @@ public class Vector {
     
     public Vector( int x, int y ) {
         this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
         this.y = y;
     }
 }    

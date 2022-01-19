@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -33,17 +32,25 @@ public class ExomedaFXMLController{
     private int enemyCount;
     Random random = new Random();
     
+    // Bepalen van bullet dependencies
+    private BulletController bulletController;
+    private BulletGenerator_Player playerBulletGenerator;
 
     @FXML
     private AnchorPane exomeda;
     
     @FXML
-    public void initialize() {
+    public void initialize(){
         
         this.playerViews = new ArrayList<PlayerView>();
         this.playerInputs = new ArrayList<KeyboardInput>();
         this.playerControllers = new ArrayList<PlayerController>();
+        
+        this.bulletController = new BulletController( this.exomeda );
+        this.playerBulletGenerator = new BulletGenerator_Player(this.bulletController);
+        
         this.enemyControllers = new ArrayList<EnemyController>();
+        
         model = new Exomeda();
         view  = new ExomedaView(model);
         
@@ -52,7 +59,7 @@ public class ExomedaFXMLController{
         this.background = new BackgroundView();
         this.exomeda.getChildren().add(this.background);
         
-        KeyboardInput playerInput = new KeyboardInput(KeyCode.UP, KeyCode.DOWN, KeyCode.LEFT, KeyCode.RIGHT);
+        KeyboardInput playerInput = new KeyboardInput(KeyCode.UP, KeyCode.DOWN, KeyCode.LEFT, KeyCode.RIGHT, KeyCode.SPACE, KeyCode.UP);
         this.newPlayer(new Vector(100, 100), playerInput );
 
         this.exomeda.getChildren().add(view);
@@ -61,38 +68,40 @@ public class ExomedaFXMLController{
         this.exomeda.setOnKeyReleased(this::keyReleased);
         this.exomeda.setFocusTraversable(true);
         
-        GameLoop gameLoop = new GameLoop(this);
-        
-        Timer t = new Timer();
-        t.scheduleAtFixedRate(gameLoop, 0, gameLoop.getDELTA_TIME());
-        
-        this.spawnEnemy();
+        start();
     }
     
     public void newPlayer(Vector position, KeyboardInput input){
         Player player = new Player(position);
-        player.setEnginePower( new Vector(5,5) );
+        player.setEnginePower(new Vector(5,5));
         PlayerView playerView = new PlayerView(player);
         
         playerView.tekenPlayer();
         this.exomeda.getChildren().add(playerView);
         
-        PlayerController playerController = new PlayerController(player, playerView, input);
+        PlayerController playerController = new PlayerController(player, playerView, input, playerBulletGenerator);
         
         this.playerControllers.add(playerController);
         this.playerInputs.add(input);
     }
     
     public void spawnEnemy(){
-        
-        while(enemyCount < 10){
-            int randomizer = random.nextInt(10);
-            // SLEEP METHOD
-            if (randomizer == 5){
-                newEnemy(new Vector(random.nextInt(12)*100+5,10));
-            }
+        if(this.getEnemyCount()<5){
+            newEnemy(new Vector(random.nextInt(12)*100+5,10));
+            enemyCount += 1;
+            System.out.println(enemyCount+"");
         }
-        
+//        while(enemyCount < 10){
+//            int randomizer = random.nextInt(3);
+//            if (randomizer == 2){
+//                newEnemy(new Vector(random.nextInt(12)*100+5,10));
+//                enemyCount += 1;
+//            }
+//        }
+    }
+    
+    public int getEnemyCount(){
+        return enemyCount;
     }
     
     public void newEnemy(Vector position){
@@ -105,19 +114,21 @@ public class ExomedaFXMLController{
         EnemyController enemyController = new EnemyController(enemy, enemyView);
         
         this.enemyControllers.add(enemyController);
-        
-        enemyCount += 1;
     }
     
-    public void update() {
+    public void update(){
         this.updateModels();
-        Platform.runLater( this::updateViews );
+        Platform.runLater(this::updateViews);
     }
 
-    private void updateModels() {
+    public void updateModels() {
         for (PlayerController pc : this.playerControllers ) {
             pc.updateModel();
         }        
+        for (EnemyController ec : this.enemyControllers){
+            ec.updateModel();
+        }
+        this.bulletController.updateModels(); 
     }
     
     public void updateViews(){
@@ -125,23 +136,40 @@ public class ExomedaFXMLController{
         for (PlayerController pc : this.playerControllers) {
             pc.updateView();
         }
+        for (EnemyController ec : this.enemyControllers){
+            ec.updateView();
+        }
+        this.bulletController.updateViews();
     }
     
     public void start(){
-        BeweegEntity task = new BeweegEntity(model, this);
-        Timer t = new Timer(true);
-        t.scheduleAtFixedRate(task, 0, 2);
+        startGameLoop();
+        startEnemySpawn();
     }
     
-    private void keyPressed( KeyEvent evt ) {
-        for ( KeyboardInput processor : this.playerInputs ) {
-            processor.handleKeyPress( evt );
-        }
+    private void startGameLoop() {
+        GameLoop gameLoop = new GameLoop(this);
+        
+        Timer t = new Timer();
+        t.scheduleAtFixedRate(gameLoop, 0, gameLoop.getDELTA_TIME());
     }
-    
-    private void keyReleased( KeyEvent evt ) {
-        for ( KeyboardInput processor : this.playerInputs ) {
-            processor.handleKeyRelease( evt );
-        }
+
+    private void startEnemySpawn() {
+        EnemyGenerator eg = new EnemyGenerator(this);
+        Timer es = new Timer();
+        es.scheduleAtFixedRate(eg, 0, 1000); // Grens bij 24, buiten bereik van FX thread
+//        Platform.runLater(() -> {es.scheduleAtFixedRate(eg, 2000, 2000);});  
     }    
+    
+    private void keyPressed(KeyEvent event) {
+        for ( KeyboardInput input : this.playerInputs ) {
+            input.handleKeyPress(event);
+        }
+    }
+    
+    private void keyReleased(KeyEvent event) {
+        for ( KeyboardInput input : this.playerInputs ) {
+            input.handleKeyRelease(event);
+        }
+    }
 }

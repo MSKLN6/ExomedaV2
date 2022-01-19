@@ -17,9 +17,12 @@ public class LoadedImage {
         ENEMY_UFO,
         ENEMY_BOSS,
         
-        PROJECTILE,
+        BULLET_PLAYER,
         
-        BACKGROUND
+        BACKGROUND, 
+        
+        FIRE,
+        GLOW
     }
     
     private Type type; 

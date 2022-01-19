@@ -24,8 +24,10 @@ public class ImageController {
         ImageController.loadImage( LoadedImage.Type.PLAYER, "space ship 1.0.png" );
         ImageController.loadImage( LoadedImage.Type.ENEMY_UFO, "Ufo.png" );
         ImageController.loadImage( LoadedImage.Type.ENEMY_BOSS, "Boss.png" );
-        ImageController.loadImage( LoadedImage.Type.PROJECTILE, "Bullet player.png" );
+        ImageController.loadImage( LoadedImage.Type.BULLET_PLAYER, "Bullet player.png" );
         ImageController.loadImage( LoadedImage.Type.BACKGROUND, "background.png" );
+        ImageController.loadImage( LoadedImage.Type.FIRE, "Boost.gif" );
+        ImageController.loadImage(LoadedImage.Type.GLOW, "glow.png");
     }
     
     public static Image getImage( LoadedImage.Type type ) {

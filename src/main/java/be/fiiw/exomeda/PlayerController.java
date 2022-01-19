@@ -15,17 +15,23 @@ public class PlayerController {
     private Player player;
     private PlayerView view;
     private PlayerInput input;
+    private BulletGenerator bulletGenerator;
 
-    public PlayerController(Player player, PlayerView view, PlayerInput input) {
+    public PlayerController(Player player, PlayerView view, PlayerInput input, BulletGenerator bulletGenerator) {
         this.player = player;
         this.view = view;
         this.input = input;
+        this.bulletGenerator = bulletGenerator;
     }
     
     public void updateModel() {
-        this.input.beweging(this.player); 
+        this.input.beweging(this.player);
         
         this.player.update();
+        
+        if ( this.input.fire() ) {
+            this.bulletGenerator.shootBullet(this);
+        }
     }
     
     public void updateView() {
@@ -42,5 +48,9 @@ public class PlayerController {
 
     public PlayerInput getInput() {
         return input;
+    }
+    
+    public BulletGenerator getBulletGenerator() {
+        return this.bulletGenerator;
     }
 }

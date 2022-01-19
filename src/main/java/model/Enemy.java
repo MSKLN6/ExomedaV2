@@ -13,17 +13,40 @@ import java.util.Random;
  */
 public class Enemy extends Entity{
     
+    Random random = new Random();
+    double downVelocity = random.nextInt(4) + 2;
+    
     public Enemy(Vector position) {
-//        super(position = new Vector(new Random().nextInt(1280), 0));
         super(position);
-        this.getDirection().y = 1; // Mikt naar beneden
+        int dirY = getDirection().getY();
+        dirY = 1; // Mikt naar beneden
+        getDirection().setY(dirY);        
     }
     
     @Override
     public void update() {
         super.update();
         
-        this.position.x = Math.max( 0, Math.min(this.position.x, App.WINDOW_WIDTH - 1));
-        this.position.y = Math.max( 0, Math.min(this.position.y, App.WINDOW_HEIGHT - 1));
+        int posX = position.getX();
+        int posY = position.getY();
+        
+        posX = Math.max(0, Math.min(posX, App.WINDOW_WIDTH - 1));
+        
+        position.setX(posX);
+        position.setY(posY);
+    }
+    
+    public void tick(){
+        
+        int posY = position.getY();    
+        
+        posY += this.downVelocity;
+        
+        position.setY(posY);
+        
+        if(posY > App.WINDOW_HEIGHT){
+            position.setY(-50);
+            position.setX(random.nextInt(12) * 100 + 5);
+        }
     }
 }

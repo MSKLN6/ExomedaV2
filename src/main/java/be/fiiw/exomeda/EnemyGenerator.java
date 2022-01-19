@@ -5,24 +5,25 @@
 package be.fiiw.exomeda;
 
 import java.util.TimerTask;
-import javafx.application.Platform;
-import model.*;
+import java.util.Random;
 
 /**
  *
- * @author vando
+ * @author DaanB
  */
-public class BeweegEntity extends TimerTask{
-    private Exomeda model;
+public class EnemyGenerator extends TimerTask{
+    
     private ExomedaFXMLController controller;
     
-    public BeweegEntity(Exomeda model, ExomedaFXMLController exomedaController) {
-        this.model = model;
-        this.controller = exomedaController;
+    Random random = new Random();
+
+    public EnemyGenerator(ExomedaFXMLController controller) {
+        this.controller = controller;
     }
     
+    @Override
     public void run() {
-        model.tick();
-        this.controller.update();
+//        this.controller.spawnEnemy();
     }
+    
 }

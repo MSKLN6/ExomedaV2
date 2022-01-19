@@ -2,16 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package view;
 
 /**
  *
- * @author DaanB
+ * @author vando
  */
-
-public class Exomeda {
+public class BulletView_Enemy {
     
-    public void tick(){
-        //
-    }
 }

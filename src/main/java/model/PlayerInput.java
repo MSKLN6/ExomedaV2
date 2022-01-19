@@ -13,12 +13,16 @@ public class PlayerInput {
     protected Boolean Down;
     protected Boolean Left;
     protected Boolean Right;
+    protected Boolean Boost;
+    protected Boolean Fire;
     
     public PlayerInput(){
         this.Up = false;
         this.Down = false;
         this.Left = false;
         this.Right = false;
+        this.Boost = false;
+        this.Fire = false;
     }
     
     public Boolean up() {
@@ -33,27 +37,37 @@ public class PlayerInput {
     public Boolean right() {
         return this.Right;
     }
+    public Boolean fire() { 
+        Boolean fired = this.Fire;
+        this.Fire = false;
+        
+        return fired;
+    }
+    public Boolean boost(){
+        return this.Boost;
+    }
     
     public void beweging(Entity schip) {
         
         Vector velocity = schip.getVelocity();
-
-        velocity.x = 0;
-        velocity.y = 0;
-
-        if (this.up()) {
-            velocity.y = -3;
+        
+        velocity.setX(0);
+        velocity.setY(0);
+        
+        if (this.up()){
+            velocity.setY(-3);
         }
         
-        else if (this.down()) {
-            velocity.y = 9;
+        else if (this.down()){
+            velocity.setY(9);
         }
-
-        if (this.left()) {
-            velocity.x = -6;
+        
+        if (this.left()){
+            velocity.setX(-6);
         }
-        else if (this.right()) {
-            velocity.x = 6;
+        
+        if (this.right()){
+            velocity.setX(6);
         }
     }
 }

@@ -24,6 +24,7 @@ public class EnemyController {
 //        this.input.beweging(this.player); 
         
         this.enemy.update();
+        this.enemy.tick();
     }
     
     public void updateView() {
