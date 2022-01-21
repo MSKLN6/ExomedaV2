@@ -45,7 +45,7 @@ public class Enemy extends Entity{
         position.setY(posY);
         
         if(posY > App.WINDOW_HEIGHT){
-            position.setY(-50);
+            position.setY(-100);
             position.setX(random.nextInt(12) * 100 + 5);
         }
     }

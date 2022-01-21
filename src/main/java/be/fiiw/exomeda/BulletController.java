@@ -47,7 +47,12 @@ public class BulletController {
         }
     }
     
-    public void updateModels() {
+    public void update(){
+        updateModel();
+        updateView();
+    }
+    
+    public void updateModel() {
         // update the bullet models: adjust coordinates
         synchronized(this.bullets){
             for ( BulletView bv : this.bullets ) {
@@ -56,7 +61,7 @@ public class BulletController {
         }
     }
     
-    public void updateViews() {
+    public void updateView() {
         
         synchronized(this.bullets){
             // make view for recently fired bullets

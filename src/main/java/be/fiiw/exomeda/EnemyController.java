@@ -20,9 +20,12 @@ public class EnemyController {
         this.view = view;
     }
     
+    public void update(){
+        updateModel();
+        updateView();
+    }
+    
     public void updateModel() {
-//        this.input.beweging(this.player); 
-        
         this.enemy.update();
         this.enemy.tick();
     }
@@ -38,8 +41,4 @@ public class EnemyController {
     public EnemyView getView() {
         return view;
     }
-
-//    public PlayerInput getInput() {
-//        return input;
-//    }
 }

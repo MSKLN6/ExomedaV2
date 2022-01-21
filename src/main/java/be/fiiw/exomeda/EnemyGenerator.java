@@ -6,6 +6,7 @@ package be.fiiw.exomeda;
 
 import java.util.TimerTask;
 import java.util.Random;
+import javafx.application.Platform;
 
 /**
  *
@@ -23,7 +24,7 @@ public class EnemyGenerator extends TimerTask{
     
     @Override
     public void run() {
-//        this.controller.spawnEnemy();
+        Platform.runLater(controller::spawnEnemy);
     }
     
 }

@@ -24,6 +24,11 @@ public class PlayerController {
         this.bulletGenerator = bulletGenerator;
     }
     
+    public void update(){
+        updateModel();
+        updateView();
+    }
+    
     public void updateModel() {
         this.input.beweging(this.player);
         
