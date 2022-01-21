@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.fiiw.exomeda.PauseScreenFXMLController">
+   <children>
+      <AnchorPane fx:id="scenePane" layoutX="-6.0" layoutY="-6.0" prefHeight="426.0" prefWidth="618.0">
+         <children>
+            <ImageView fitHeight="1014.0" fitWidth="1436.0" layoutX="4.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/Planeten.png" />
+               </image>
+            </ImageView>
+            <Text fill="#c350c3" layoutX="380.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pause Menu">
+               <font>
+                  <Font name="Rockwell" size="96.0" />
+               </font>
+            </Text>
+            <Button fx:id="RestartButton" layoutX="725.0" layoutY="169.0" mnemonicParsing="false" onAction="#switchToExomedaFXML" prefHeight="137.0" prefWidth="318.0" text="Restart">
+               <font>
+                  <Font size="72.0" />
+               </font>
+            </Button>
+            <Button fx:id="quitButton" layoutX="316.0" layoutY="167.0" mnemonicParsing="false" onAction="#quit" prefHeight="137.0" prefWidth="266.0" text="Quit">
+               <font>
+                  <Font size="72.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="509.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controls">
+               <font>
+                  <Font size="72.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="474.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shooting = Spacebar ">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="243.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upwards = Arrow Up">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="730.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Downwards = Arrow Down">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="187.0" layoutY="643.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To The Left = Arrow Left">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="732.0" layoutY="648.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To The Right = Arrow Right">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

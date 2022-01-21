@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import static javafx.application.Application.launch;
 
 /**
  * JavaFX App
@@ -18,32 +19,24 @@ public class App extends Application {
     public static int WINDOW_WIDTH = 1280;
     public static int WINDOW_HEIGHT = 720;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("ExomedaFXML"), App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
+    
+     @Override
+     public void start(Stage stage) {
+    try {
+    Parent root = FXMLLoader.load(getClass().getResource("StartingScreenFXML.fxml"));
+        Scene scene = new Scene(root, App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
         stage.setScene(scene);
         stage.setTitle("Exomeda - TheGame");
         stage.show();
         stage.setResizable(false);
-        
-        stage.setOnCloseRequest(e -> {
-            e.consume();
-            stage.close();
-            System.exit(0);
-        });
-    }
+    
+  } catch(Exception e) {
+   e.printStackTrace();
+  }
+ } 
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public static void main(String[] args) {
-        launch();
-    }
+ public static void App(String[] args) {
+  launch(args);
+ }
 
 }

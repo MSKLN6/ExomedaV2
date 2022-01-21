@@ -1,12 +1,20 @@
 package be.fiiw.exomeda;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.*;
 import view.*;
 
@@ -32,6 +40,10 @@ public class ExomedaFXMLController{
 
     @FXML
     private AnchorPane exomedaAnchorPane;
+    private Button pauseButton;
+    private Scene scene;
+    private Parent root;
+    private Stage stage;
     
     @FXML
     public void initialize(){
@@ -61,6 +73,14 @@ public class ExomedaFXMLController{
         exomedaAnchorPane.setFocusTraversable(true);
         
         start();
+    }
+    
+    public void switchToPauseScreenFXML(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("PauseScreenFXML.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
+        stage.setScene(scene);
+        stage.show();
     }
     
     public void newPlayer(KeyboardInput input){
