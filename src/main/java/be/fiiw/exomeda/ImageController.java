@@ -22,12 +22,16 @@ public class ImageController {
         ImageController.images = new ArrayList<LoadedImage>();
         
         ImageController.loadImage( LoadedImage.Type.PLAYER, "space ship 1.0.png" );
-        ImageController.loadImage( LoadedImage.Type.ENEMY_UFO, "Ufo.png" );
+        ImageController.loadImage( LoadedImage.Type.ENEMY_UFO, "Ufo high qual.png" );
         ImageController.loadImage( LoadedImage.Type.ENEMY_BOSS, "Boss.png" );
         ImageController.loadImage( LoadedImage.Type.BULLET_PLAYER, "Bullet player.png" );
         ImageController.loadImage( LoadedImage.Type.BACKGROUND, "background.png" );
         ImageController.loadImage( LoadedImage.Type.FIRE, "Boost.gif" );
         ImageController.loadImage(LoadedImage.Type.GLOW, "glow.png");
+        ImageController.loadImage(LoadedImage.Type.HEALTH1, "Heart1.png");
+        ImageController.loadImage(LoadedImage.Type.HEALTH2, "Heart2.png");
+        ImageController.loadImage(LoadedImage.Type.HEALTH3, "Heart3.png");
+        ImageController.loadImage(LoadedImage.Type.GAMEOVER, "Game over screen.png");
     }
     
     public static Image getImage( LoadedImage.Type type ) {
