@@ -48,6 +48,7 @@ public class PauseScreenFXMLController {
         if(alert.showAndWait().get() == ButtonType.OK){
             stage = (Stage)scenePane.getScene().getWindow();
             stage.close();
+            System.exit(0);
         }
     }
     

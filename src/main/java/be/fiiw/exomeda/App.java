@@ -29,6 +29,12 @@ public class App extends Application {
         stage.setTitle("Exomeda - TheGame");
         stage.show();
         stage.setResizable(false);
+        
+        stage.setOnCloseRequest(e -> {
+            e.consume();
+            stage.close();
+            System.exit(0);
+        });
     
   } catch(Exception e) {
    e.printStackTrace();
