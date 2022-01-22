@@ -4,6 +4,8 @@
  */
 package model;
 
+import view.*;
+
 /**
  *
  * @author vando
@@ -12,6 +14,7 @@ public class Bullet {
     private Entity shooter;
     private Vector position;
     private Vector velocity;
+    private boolean collided;
     
     private int damage;
     private int speed; // primarily used to manipulate the initial velocity
@@ -76,4 +79,5 @@ public class Bullet {
         position.setX(posX);
         position.setY(posY);
     }
+    
 }

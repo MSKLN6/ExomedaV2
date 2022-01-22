@@ -6,8 +6,8 @@ package be.fiiw.exomeda;
 
 import java.util.ArrayList;
 import javafx.scene.layout.AnchorPane;
-import model.Bullet;
-import view.BulletView;
+import model.*;
+import view.*;
 
 /**
  *
@@ -122,5 +122,9 @@ public class BulletController {
         else if ( bullet.getModel().getPosition().getY() > App.WINDOW_HEIGHT + 500 ) {
             this.bulletsToRemove.add( bullet );
         }
+    }
+
+    public ArrayList<BulletView> getBullets() {
+        return bullets;
     }
 }

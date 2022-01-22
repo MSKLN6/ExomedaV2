@@ -25,6 +25,8 @@ public class BulletView_Player extends BulletView {
     
     private static int HALF_WIDTH = WIDTH / 2;
     private static int HALF_HEIGHT = HEIGHT / 2;
+    
+    private Rectangle hitbox;
 
     public BulletView_Player(Bullet model) {
         super(model);
@@ -32,27 +34,18 @@ public class BulletView_Player extends BulletView {
     
     public void setup() {
 
-        //Rectangle l = new Rectangle( 0, 0, BulletView_Player.WIDTH, BulletView_Player.HEIGHT);
-        //l.setFill( Color.CYAN );
-        //this.getChildren().add(l);
+//        hitbox = new Rectangle( -9, -75, BulletView_Player.WIDTH, BulletView_Player.HEIGHT);
+//        this.getChildren().add(hitbox);
         
         Image image = ImageController.getImage(LoadedImage.Type.BULLET_PLAYER);
         ImageView iv = new ImageView( image );
-        // the lasers are facing UP, we want them facing left or right
-        if ( this.model.getShooter().getDirection().getX() >= 0 ) {
-            // facing RIGHT 
-            iv.setLayoutX(-27);
-            iv.setLayoutY(-53);
-            iv.setY( -20 );
-            iv.setX( 20 );
-        }
-        else {
-            // facing LEFT
-            iv.setRotate(-90);
-            iv.setY( -20 ); // make the laser visually fit the hitbox a bit better
-            iv.setX( 20 ); 
-        }
-        iv.setFitWidth( 13 );
+        
+        iv.setLayoutX(-27);
+        iv.setLayoutY(-53);
+        iv.setY(-20);
+        iv.setX(20);
+        
+        iv.setFitWidth(13);
         iv.setPreserveRatio(true);
         iv.setSmooth(true);
         
@@ -73,6 +66,11 @@ public class BulletView_Player extends BulletView {
     }
         
     public Vector getCenterPoint() {
-        return new Vector( this.model.getPosition().getX() + BulletView_Player.HALF_WIDTH, this.model.getPosition().getY() + BulletView_Player.HALF_HEIGHT );
+        return new Vector( this.model.getPosition().getX() + BulletView_Player.HALF_WIDTH, this.model.getPosition().getY() + BulletView_Player.HALF_HEIGHT);
     }
+
+    public Rectangle getHitbox() {
+        return hitbox;
+    }
+    
 }

@@ -15,6 +15,8 @@ public class Enemy extends Entity{
     
     Random random = new Random();
     double downVelocity = random.nextInt(4) + 2;
+    private static int enemyWidth = 75;
+    private static int enemyHeight = 40;
     
     public Enemy(Vector position) {
         super(position);
@@ -49,4 +51,14 @@ public class Enemy extends Entity{
             position.setX(random.nextInt(12) * 100 + 5);
         }
     }
+
+    public static int getEnemyWidth() {
+        return enemyWidth;
+    }
+
+    public static int getEnemyHeight() {
+        return enemyHeight;
+    }
+    
+    
 }

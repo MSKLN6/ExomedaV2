@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.*;
 import view.*;
@@ -61,7 +62,7 @@ public class ExomedaFXMLController{
         exomedaAnchorPane.getChildren().add(background);
         
         exomedaModel = new Exomeda();
-        exomedaView  = new ExomedaView(exomedaModel);
+        exomedaView  = new ExomedaView(exomedaModel, this);
         
         KeyboardInput playerInput = new KeyboardInput(KeyCode.UP, KeyCode.DOWN, KeyCode.LEFT, KeyCode.RIGHT, KeyCode.SPACE, KeyCode.UP);
         newPlayer(playerInput);
@@ -94,6 +95,7 @@ public class ExomedaFXMLController{
     }
     
     public void spawnEnemy(){
+        
         if (exomedaModel.getEnemyCount()<2){
             newEnemy();
         }
@@ -115,6 +117,8 @@ public class ExomedaFXMLController{
     }
     
     public void update(){
+        exomedaModel.update();
+        exomedaView.update();
         for (PlayerController pc : playerControllers ) {
             pc.update();
         }        
@@ -152,5 +156,9 @@ public class ExomedaFXMLController{
         for ( KeyboardInput input : playerInputs) {
             input.handleKeyRelease(event);
         }
+    }
+    
+    public BulletController getBulletController(){
+        return bulletController;
     }
 }

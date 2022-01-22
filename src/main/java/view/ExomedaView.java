@@ -8,6 +8,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.AnchorPane;
 import java.util.*;
 import model.*;
+import be.fiiw.exomeda.*;
 
 /**
  *
@@ -19,12 +20,19 @@ public class ExomedaView extends Region{
     private PlayerView playerView;
     private EnemyView enemyView;
     private ArrayList<PlayerView> playerViews;
+    private ArrayList<BulletView> bullets;
+    private ArrayList<EnemyView> enemyViews;
+    
+    private int i = 0;
 
-    public ExomedaView(Exomeda exomedaModel) {
+    public ExomedaView(Exomeda exomedaModel, ExomedaFXMLController controller) {
         model = exomedaModel;
         spel = new AnchorPane();
         playerViews = new ArrayList<PlayerView>();
+        enemyViews = new ArrayList<EnemyView>();
         update();
+        
+        bullets = controller.getBulletController().getBullets();
     }
     
     public void newPlayer(){
@@ -41,6 +49,7 @@ public class ExomedaView extends Region{
         enemyView.tekenEnemy();
         
         spel.getChildren().addAll(enemyView);
+        enemyViews.add(enemyView);
     }
 
     public PlayerView getPlayerView() {
@@ -53,8 +62,24 @@ public class ExomedaView extends Region{
     
     public void update(){
         getChildren().clear();
-        
         getChildren().addAll(spel);
+        collision();
+        
+        i += 1;
     }
     
+    public void collision(){
+        for (EnemyView enemy : enemyViews) {
+            for (BulletView bullet : bullets) {
+                if (enemy.collision(bullet)){
+                    enemy.switchCollided();
+                    enemyViews.remove(enemy);
+                    bullet.stop();
+                    model.redEnemyCount();
+                    System.out.println("" + i);
+                }
+            }
+        }
+        
+    }
 }

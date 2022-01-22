@@ -45,4 +45,17 @@ public abstract class BulletView extends Region {
         
         return true;
     }
+    
+    public int getPositionX(){
+        return this.model.getPosition().getX();
+    }
+    
+    public int getPositionY(){
+        return this.model.getPosition().getY();
+    }
+    
+    public void stop(){
+        this.model.getPosition().setY(-10);
+    }
+    
 }
