@@ -20,7 +20,7 @@ public class BulletGenerator_Player extends BulletGenerator {
     
     @Override
     public Bullet createBullet(){
-        return new Bullet(1, 20); // 1 damage, 20 speed
+        return new Bullet(1, 22);
     }
     
     @Override

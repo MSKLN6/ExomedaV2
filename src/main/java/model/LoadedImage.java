@@ -22,7 +22,11 @@ public class LoadedImage {
         BACKGROUND, 
         
         FIRE,
-        GLOW
+        GLOW,
+        HEALTH1,
+        HEALTH2,
+        HEALTH3,
+        GAMEOVER
     }
     
     private Type type; 
