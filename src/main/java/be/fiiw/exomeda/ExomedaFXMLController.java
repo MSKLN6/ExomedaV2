@@ -32,6 +32,12 @@ public class ExomedaFXMLController{
     // Bepalen van background
     private BackgroundView background;
     
+    //gameover view
+    private GameoverView gameoverView;
+    
+    //healthbar
+    private HealthbarView healthbarView;
+    
     // Bepalen van enemy dependencies
     Random random = new Random();
     
@@ -71,6 +77,12 @@ public class ExomedaFXMLController{
         newPlayer(playerInput);
 
         exomedaAnchorPane.getChildren().add(exomedaView);
+        
+        healthbarView = new HealthbarView();
+        exomedaAnchorPane.getChildren().add(healthbarView);
+        
+        gameoverView = new GameoverView();
+        exomedaAnchorPane.getChildren().add(gameoverView);
         
         exomedaAnchorPane.setOnKeyPressed(this::keyPressed);
         exomedaAnchorPane.setOnKeyReleased(this::keyReleased);
@@ -131,6 +143,9 @@ public class ExomedaFXMLController{
         background.update();
         bulletController.update();
         updateScore();
+        if (exomedaModel.isGameover()){
+        gameoverView.update();
+        }
     }
     
     public void start(){

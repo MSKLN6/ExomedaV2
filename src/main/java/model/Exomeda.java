@@ -7,7 +7,7 @@ package model;
 import be.fiiw.exomeda.*;
 import java.util.*;
 import view.*;
-
+import java.io.File;
 
 /**
  *
@@ -26,6 +26,8 @@ public class Exomeda {
     private final int enemyPosY;
     private int enemyCount;
     Random random = new Random();
+    private boolean gameover;
+    //private int health;
     
     public Exomeda(){
         playerPosX = 100;
@@ -37,6 +39,8 @@ public class Exomeda {
         
         enemies = new ArrayList<>();
         players = new ArrayList<>();
+        gameover = false;
+        //health = 3;
     }
     
     public void newPlayer(){
@@ -61,6 +65,10 @@ public class Exomeda {
     public Player getPlayer() {
         return player;
     }
+    
+    /*public int getHealth(){
+        return health;
+    }*/
 
     public Enemy getEnemy() {
         return enemy;
@@ -72,6 +80,8 @@ public class Exomeda {
     
     public void update(){
         collision();
+        checkGameover();
+        //updateHealth();
     }
     
     public void collision(){
@@ -84,5 +94,25 @@ public class Exomeda {
             }
         }
         
+    }
+
+    /**
+     * @return the gameover
+     */
+    public boolean isGameover() {
+        return gameover;
+    }
+    
+/*    public int updateHealth(){
+        if (player.getCollided()){
+            health--;
+        }
+        return health;
+    }*/
+    
+    public void checkGameover(){
+        if (player.getCollided()){
+                this.gameover = true;
+            }
     }
 }

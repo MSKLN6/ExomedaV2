@@ -21,9 +21,6 @@ public class Player extends Entity{
     public Player(Vector position) {
         super(position = new Vector (App.WINDOW_WIDTH/2, (int)Math.round(App.WINDOW_HEIGHT*0.70)));
         
-        int dirY = getDirection().getY();
-        dirY = -1; // Mikt naar beneden
-        getDirection().setY(dirY);
     }
     
     @Override
