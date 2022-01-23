@@ -26,12 +26,12 @@ public class EnemyController {
     }
     
     public void updateModel() {
-        this.enemy.update();
-        this.enemy.tick();
+        enemy.update();
+        enemy.tick();
     }
     
     public void updateView() {
-        this.view.update();
+        view.update();
     }
     
     public Enemy getEnemy() {

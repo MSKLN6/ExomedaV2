@@ -30,17 +30,17 @@ public class PlayerController {
     }
     
     public void updateModel() {
-        this.input.beweging(this.player);
+        input.beweging(player);
         
-        this.player.update();
+        player.update();
         
-        if ( this.input.fire() ) {
-            this.bulletGenerator.shootBullet(this);
+        if ( input.fire() ) {
+            bulletGenerator.shootBullet(this);
         }
     }
     
     public void updateView() {
-        this.view.update();
+        view.update();
     }
     
     public Player getPlayer() {
@@ -56,6 +56,6 @@ public class PlayerController {
     }
     
     public BulletGenerator getBulletGenerator() {
-        return this.bulletGenerator;
+        return bulletGenerator;
     }
 }

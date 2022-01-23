@@ -114,9 +114,9 @@ public class ExomedaFXMLController{
         if (exomedaModel.getEnemyCount()<2){
             newEnemy();
         }
-        if(exomedaModel.getEnemyCount()<15){
-            int randomizer = random.nextInt(4);
-            if (randomizer == 2){
+        if(exomedaModel.getEnemyCount()<20){
+            int randomizer = random.nextInt(2);
+            if (randomizer == 1){
                 newEnemy();
             }
         }
@@ -144,7 +144,7 @@ public class ExomedaFXMLController{
         bulletController.update();
         updateScore();
         if (exomedaModel.isGameover()){
-        gameoverView.update();
+            gameoverView.update();
         }
     }
     

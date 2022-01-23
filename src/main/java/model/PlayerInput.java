@@ -9,12 +9,12 @@ package model;
  * @author vando
  */
 public class PlayerInput {
-    protected Boolean Up;
-    protected Boolean Down;
-    protected Boolean Left;
-    protected Boolean Right;
-    protected Boolean Boost;
-    protected Boolean Fire;
+    private Boolean Up;
+    private Boolean Down;
+    private Boolean Left;
+    private Boolean Right;
+    private Boolean Boost;
+    private Boolean Fire;
     
     public PlayerInput(){
         this.Up = false;
@@ -26,25 +26,49 @@ public class PlayerInput {
     }
     
     public Boolean up() {
-        return this.Up;
+        return Up;
     }
     public Boolean down() {
-        return this.Down;
+        return Down;
     }
     public Boolean left() {
-        return this.Left;
+        return Left;
     }
     public Boolean right() {
-        return this.Right;
+        return Right;
     }
     public Boolean fire() { 
-        Boolean fired = this.Fire;
-        this.Fire = false;
+        Boolean fired = Fire;
+        Fire = false;
         
         return fired;
     }
     public Boolean boost(){
-        return this.Boost;
+        return Boost;
+    }
+    
+    public void setUp(boolean b){
+        Up = b;
+    }
+    
+    public void setDown(boolean b){
+        Down = b;
+    }
+    
+    public void setLeft(boolean b){
+        Left = b;
+    }
+    
+    public void setRight(boolean b){
+        Right = b;
+    }
+    
+    public void setBoost(boolean b){
+        Boost = b;
+    }
+    
+    public void setFire(boolean b){
+        Fire = b;
     }
     
     public void beweging(Entity schip) {
@@ -54,19 +78,19 @@ public class PlayerInput {
         velocity.setX(0);
         velocity.setY(0);
         
-        if (this.up()){
+        if (up()){
             velocity.setY(-3);
         }
         
-        else if (this.down()){
+        else if (down()){
             velocity.setY(9);
         }
         
-        if (this.left()){
+        if (left()){
             velocity.setX(-6);
         }
         
-        if (this.right()){
+        if (right()){
             velocity.setX(6);
         }
     }

@@ -19,7 +19,7 @@ public class ImageController {
 //    }
     
     public static void preloadImages() {
-        ImageController.images = new ArrayList<LoadedImage>();
+        ImageController.images = new ArrayList<>();
         
         ImageController.loadImage( LoadedImage.Type.PLAYER, "space ship 1.0.png" );
         ImageController.loadImage( LoadedImage.Type.ENEMY_UFO, "Ufo high qual.png" );

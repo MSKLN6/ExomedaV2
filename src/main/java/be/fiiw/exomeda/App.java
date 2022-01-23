@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import static javafx.application.Application.launch;
 
 /**
@@ -24,7 +23,7 @@ public class App extends Application {
      public void start(Stage stage) {
     try {
     Parent root = FXMLLoader.load(getClass().getResource("StartingScreenFXML.fxml"));
-        Scene scene = new Scene(root, App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
+        scene = new Scene(root, App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
         stage.setScene(scene);
         stage.setTitle("Exomeda - TheGame");
         stage.show();

@@ -29,8 +29,8 @@ public class ExomedaView extends Region{
         model = exomedaModel;
         spel = new AnchorPane();
         controller = c;
-        playerViews = new ArrayList<PlayerView>();
-        enemyViews = new ArrayList<EnemyView>();
+        playerViews = new ArrayList<>();
+        enemyViews = new ArrayList<>();
         update();
         
         bullets = controller.getBulletController().getBullets();

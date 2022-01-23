@@ -5,7 +5,6 @@
 package be.fiiw.exomeda;
 
 import java.util.TimerTask;
-import javafx.application.Platform;
 import model.*;
 
 /**

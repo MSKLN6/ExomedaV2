@@ -57,11 +57,11 @@ public class BulletView_Player extends BulletView {
         this.update();
     }
     
-    protected int getBulletWidth() {
+    public int getBulletWidth() {
         return BulletView_Player.WIDTH;
     }
     
-    protected int getBulletHeight() {
+    public int getBulletHeight() {
         return BulletView_Player.HEIGHT;
     }
         

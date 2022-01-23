@@ -13,22 +13,16 @@ import java.util.Random;
 public class Entity {
     protected Vector position;
     private Vector velocity;
-    private Vector direction;
-    private Vector enginePower;
     Random random = new Random();
 
     public Entity(Vector position) {
         this.position = position;
         this.velocity = new Vector(0,0);
-        this.direction = new Vector(0,-1);
-        this.enginePower = new Vector(1,1);
     }
     
     public Entity(Vector position, Vector velocity) {
         this.position = position;
         this.velocity = velocity;
-        this.direction = new Vector(0,-1);
-        this.enginePower = new Vector(1,1);
     }
     
     public void update(){
@@ -60,26 +54,4 @@ public class Entity {
     public void setVelocity(Vector velocity) {
         this.velocity = velocity;
     }
-
-    public Vector getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Vector direction) {
-        this.direction = direction;
-    }
-    
-    public Vector getEnginePower() {
-        return enginePower;
-    }
-
-    public void setEnginePower(Vector enginePower) {
-        this.enginePower = enginePower;
-    }
-    
-    public int randomX(){
-        int x = random.nextInt(1280);
-        return x;
-    }
-    
 }

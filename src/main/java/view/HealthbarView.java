@@ -19,10 +19,8 @@ import model.Vector;
  */
 public class HealthbarView extends Region{
     private Vector positie;
-    private Exomeda exomeda;
 
     public HealthbarView() {
-        this.exomeda = exomeda;
         this.positie = new Vector(0,0);
         health3();
     }

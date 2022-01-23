@@ -9,11 +9,7 @@ import be.fiiw.exomeda.ImageController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
-import model.Enemy;
-import model.Exomeda;
-import model.LoadedImage;
-import model.Player;
-import model.Vector;
+import model.*;
 
 /**
  *
@@ -21,10 +17,8 @@ import model.Vector;
  */
 public class GameoverView extends Region{
     private Vector positie;
-    private Exomeda exomeda;
 
     public GameoverView() {
-        this.exomeda = exomeda;
         this.positie = new Vector(0,0);
     }
     

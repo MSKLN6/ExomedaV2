@@ -11,39 +11,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class StartingScreenFXMLController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private ImageView Alienship;
-
-    @FXML
     private ImageView Alienship1;
-
-    @FXML
     private ImageView ArrowKey;
-
-    @FXML
     private ImageView Background;
-
-    @FXML
     private ImageView Spacebar;
-
-    @FXML
     private Button StartButton;
-
-    @FXML
     private AnchorPane anchorPane;
-
+    
     @FXML
     private Stage stage;
     private Scene scene;

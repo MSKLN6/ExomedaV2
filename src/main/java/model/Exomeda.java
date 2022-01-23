@@ -4,10 +4,7 @@
  */
 package model;
 
-import be.fiiw.exomeda.*;
 import java.util.*;
-import view.*;
-import java.io.File;
 
 /**
  *
@@ -112,7 +109,7 @@ public class Exomeda {
     
     public void checkGameover(){
         if (player.getCollided()){
-                this.gameover = true;
-            }
+            this.gameover = true;
+        }
     }
 }

@@ -23,10 +23,10 @@ public class BulletController {
     private AnchorPane screen;
     
     public BulletController(AnchorPane screen) {
-        this.bullets = new ArrayList<BulletView>();
+        this.bullets = new ArrayList<>();
         
-        this.pc = new ArrayList<PlayerController>();
-        this.bulletsToRemove = new ArrayList<BulletView>();
+        this.pc = new ArrayList<>();
+        this.bulletsToRemove = new ArrayList<>();
         
         this.screen = screen;
     }
@@ -34,24 +34,24 @@ public class BulletController {
     public void shootBullet(PlayerController shooter) {
         
        //https://stackoverflow.com/questions/1431681/correct-way-to-synchronize-arraylist-in-java
-        synchronized(this.pc){
-            this.pc.add( shooter );
+        synchronized(pc){
+            pc.add( shooter );
         }
     }
     
     public void update(){
         // synchroniseren van de juiste positie van de bullets (model)
-        synchronized(this.bullets){
-            for ( BulletView bv : this.bullets ) {
+        synchronized(bullets){
+            for ( BulletView bv : bullets ) {
                 bv.getModel().update();
             }
         }
         
         //updaten van de view
-        synchronized(this.bullets){
-            synchronized(this.pc){
+        synchronized(bullets){
+            synchronized(pc){
 
-                for ( PlayerController playerController : this.pc ) {
+                for ( PlayerController playerController : pc ) {
 
                     Bullet b = playerController.getBulletGenerator().createBullet();
                     b.setShooter( playerController.getPlayer() );
@@ -65,22 +65,22 @@ public class BulletController {
                     bv.setup();
 
                     bullets.add( bv );
-                    this.screen.getChildren().add( bv );
+                    screen.getChildren().add( bv );
                 }
 
-                this.pc.clear();
+                pc.clear();
             }
 
-            for (BulletView bv : this.bullets) {
+            for (BulletView bv : bullets) {
                 bv.update();
-                this.checkBulletOffscreen(bv);
+                checkBulletOffscreen(bv);
             }
 
-            for (BulletView verwijder : this.bulletsToRemove) {
-                this.bullets.remove(verwijder);
-                this.screen.getChildren().remove(verwijder);
+            for (BulletView verwijder : bulletsToRemove) {
+                bullets.remove(verwijder);
+                screen.getChildren().remove(verwijder);
             }
-            this.bulletsToRemove.clear();
+            bulletsToRemove.clear();
         
         }
     }
@@ -92,10 +92,10 @@ public class BulletController {
     
     private void checkBulletOffscreen( BulletView bullet ) {
         if ( bullet.getModel().getPosition().getY() < - App.WINDOW_HEIGHT ) {
-            this.bulletsToRemove.add( bullet );
+            bulletsToRemove.add( bullet );
         }
         else if ( bullet.getModel().getPosition().getY() > App.WINDOW_HEIGHT ) {
-            this.bulletsToRemove.add( bullet );
+            bulletsToRemove.add( bullet );
         }
     }
 }

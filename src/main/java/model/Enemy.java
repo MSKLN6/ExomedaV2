@@ -14,15 +14,12 @@ import java.util.Random;
 public class Enemy extends Entity{
     
     Random random = new Random();
-    double downVelocity = random.nextInt(4) + 2;
+    double downVelocity = random.nextInt(3) + 4;
     private static int enemyWidth = 75;
     private static int enemyHeight = 40;
     
     public Enemy(Vector position) {
-        super(position);
-        int dirY = getDirection().getY();
-        dirY = 1; // Mikt naar beneden
-        getDirection().setY(dirY);        
+        super(position);  
     }
     
     @Override

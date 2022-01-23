@@ -20,7 +20,7 @@ public abstract class BulletGenerator {
     }
     
     public void shootBullet( PlayerController playerController ) {
-        this.controller.shootBullet(playerController);
+        controller.shootBullet(playerController);
     }
     
     public abstract Bullet createBullet();

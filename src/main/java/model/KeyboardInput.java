@@ -32,22 +32,22 @@ public class KeyboardInput extends PlayerInput {
         KeyCode key = e.getCode();
         
         if ( key == this.up ) {
-            this.Up = true;
+            setUp(true);
         }
         else if ( key == this.down ) {
-            this.Down = true;
+            setDown(true);
         }
         else if ( key == this.left ) {
-            this.Left = true;
+            setLeft(true);
         }
         else if ( key == this.right ) {
-            this.Right = true;
+            setRight(true);
         }
         else if ( key == this.fire ) {
-            this.Fire = true;
+            setFire(true);
         }
         else if ( key == this.boost ) {
-            this.Boost = true;
+            setBoost(true);
         }
     }
     
@@ -55,16 +55,16 @@ public class KeyboardInput extends PlayerInput {
         KeyCode key = e.getCode();
         
         if ( key == this.up ) {
-            this.Up = false;
+            setUp(false);
         }
         else if ( key == this.down ) {
-            this.Down = false;
+            setDown(false);
         }
         else if ( key == this.left ) {
-            this.Left = false;
+            setLeft(false);
         }
         else if ( key == this.right ) {
-            this.Right = false;
+            setRight(false);
         }
     }
 }

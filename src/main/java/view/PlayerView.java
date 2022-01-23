@@ -9,9 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Rectangle;
-import model.LoadedImage;
-import model.Player;
-import model.Vector;
+import model.*;
 
 /**
  *
@@ -25,8 +23,8 @@ public class PlayerView extends Region{
     public PlayerView(Player model) {
         
         this.model = model;
-        this.tekenPlayer();
-        this.boost();
+        tekenPlayer();
+        boost();
     }
 
     public Player getModel() {
@@ -59,9 +57,9 @@ public class PlayerView extends Region{
         iv.setPreserveRatio(true);
         iv.setSmooth(true);
         
-        this.getChildren().add(iv);
+        getChildren().add(iv);
         
-        this.update();
+        update();
     }
     
     public void removePlayer(){
@@ -92,10 +90,10 @@ public class PlayerView extends Region{
         iv2.setPreserveRatio(true);
         iv2.setSmooth(true);
         
-        this.getChildren().add(iv);
-        this.getChildren().add(iv2);
+        getChildren().add(iv);
+        getChildren().add(iv2);
         
-        this.update();
+        update();
     }
 
     public Rectangle getHitbox() {

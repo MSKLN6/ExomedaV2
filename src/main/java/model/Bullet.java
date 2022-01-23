@@ -4,8 +4,6 @@
  */
 package model;
 
-import view.*;
-
 /**
  *
  * @author vando
@@ -14,7 +12,6 @@ public class Bullet {
     private Entity shooter;
     private Vector position;
     private Vector velocity;
-    private boolean collided;
 
     private int speed;
     

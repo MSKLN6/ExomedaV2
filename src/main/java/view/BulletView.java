@@ -5,8 +5,7 @@
 package view;
 
 import javafx.scene.layout.Region;
-import model.Bullet;
-import model.Vector;
+import model.*;
 
 /**
  *
@@ -26,7 +25,6 @@ public abstract class BulletView extends Region {
     
     public abstract void setup();
     
-    // supposed to be called once per game loop tick
     public void update() {
         this.setTranslateX( this.model.getPosition().getX() );
         this.setTranslateY( this.model.getPosition().getY() );

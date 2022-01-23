@@ -5,8 +5,6 @@
 package model;
 
 import be.fiiw.exomeda.App;
-import static java.lang.Math.abs;
-import view.PlayerView;
 
 /**
  *
