@@ -15,24 +15,21 @@ public class Bullet {
     private Vector position;
     private Vector velocity;
     private boolean collided;
+
+    private int speed;
     
-    private int damage;
-    private int speed; // primarily used to manipulate the initial velocity
-    
-    public Bullet(Entity shooter, Vector position, int damage, int speed) {
+    public Bullet(Entity shooter, Vector position, int speed) {
         this.shooter = shooter;
         this.position = position;
-        this.damage = damage;
         this.speed = speed;
         
         this.velocity = new Vector(speed,0);
     }
     
-    public Bullet(int damage, int speed) {
-        this.damage = damage;
+    public Bullet(int speed) {
         this.speed = speed;
         
-        // expected to be set later
+        // schooter moet nog gedefinieerd worden.
         this.shooter = null;
         this.position = new Vector(0,0);
         this.velocity = new Vector(0,- speed);
@@ -48,10 +45,6 @@ public class Bullet {
 
     public Vector getVelocity() {
         return velocity;
-    }
-    
-    public int getDamage() {
-        return damage;
     }
     
     public void setShooter(Entity shooter) {
