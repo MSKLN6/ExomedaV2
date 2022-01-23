@@ -29,7 +29,7 @@ public class BackgroundView extends Region {
         
         Image image = ImageController.getImage(LoadedImage.Type.BACKGROUND);
         
-        // see https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
+        // https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
         ImageView iv = new ImageView( image );
         iv.setFitWidth( App.WINDOW_WIDTH * 2 );
         iv.setPreserveRatio(true);

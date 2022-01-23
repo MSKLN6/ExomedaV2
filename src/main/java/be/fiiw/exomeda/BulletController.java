@@ -55,7 +55,7 @@ public class BulletController {
 
                     Bullet b = playerController.getBulletGenerator().createBullet();
                     b.setShooter( playerController.getPlayer() );
-                    b.setPosition( playerController.getView().getCenterPoint() );
+                    b.setPosition( playerController.getPlayer().getCenterPoint() );
                     
                     int velX = b.getVelocity().getX();
                     

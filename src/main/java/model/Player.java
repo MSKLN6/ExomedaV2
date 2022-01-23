@@ -45,6 +45,11 @@ public class Player extends Entity{
         return playerHeight;
     }
     
+    // nodig om bullets uit te tekenen
+    public Vector getCenterPoint() {
+        return new Vector( this.getPosition().getX() + getPlayerWidth() / 2, this.getPosition().getY() + getPlayerHeight()/ 2 );
+    }
+    
     public boolean collision(Enemy enemy){
         int dx = enemy.getPosition().getX() - position.getX();
         int dy = enemy.getPosition().getY() - position.getY();

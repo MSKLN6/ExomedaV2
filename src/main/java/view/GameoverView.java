@@ -35,7 +35,7 @@ public class GameoverView extends Region{
     private void gameoverscreen(){
         Image image = ImageController.getImage(LoadedImage.Type.GAMEOVER);
         
-        // see https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
+        // https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
         ImageView iv = new ImageView( image );
         iv.setFitWidth( App.WINDOW_WIDTH );
         iv.setPreserveRatio(true);

@@ -40,7 +40,7 @@ public class HealthbarView extends Region{
     private void health3(){
         Image image = ImageController.getImage(LoadedImage.Type.HEALTH1);
         
-        // see https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
+        // https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
         ImageView iv = new ImageView( image );
         iv.setFitWidth( 110 );
         iv.setLayoutX(App.WINDOW_WIDTH - 150);
@@ -54,7 +54,7 @@ public class HealthbarView extends Region{
     private void health2(){
         Image image = ImageController.getImage(LoadedImage.Type.HEALTH2);
         
-        // see https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
+        // shttps://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
         ImageView iv = new ImageView( image );
         iv.setFitWidth( 110 );
         iv.setLayoutX(App.WINDOW_WIDTH - 150);
@@ -68,7 +68,7 @@ public class HealthbarView extends Region{
     private void health1(){
         Image image = ImageController.getImage(LoadedImage.Type.HEALTH1);
         
-        // see https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
+        // https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
         ImageView iv = new ImageView( image );
         iv.setFitWidth( 110 );
         iv.setLayoutX(App.WINDOW_WIDTH - 150);

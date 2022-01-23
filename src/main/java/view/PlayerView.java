@@ -46,17 +46,12 @@ public class PlayerView extends Region{
         }
     }
     
-    public Vector getCenterPoint() {
-        return new Vector( this.model.getPosition().getX() + model.getPlayerWidth() / 2, this.model.getPosition().getY() + model.getPlayerHeight()/ 2 );
-    }
-    
     public void tekenPlayer() {
         
 //        hitbox = new Rectangle( 0, 0, model.getPlayerWidth(), model.getPlayerHeight());
 //        getChildren().add(hitbox);
         
-        Image image = null;
-        image = ImageController.getImage(LoadedImage.Type.PLAYER);
+        Image image = ImageController.getImage(LoadedImage.Type.PLAYER);
         
         // https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
         ImageView iv = new ImageView(image);
@@ -77,10 +72,8 @@ public class PlayerView extends Region{
     
     public void boost() {
         
-        Image image = null;
-        image = ImageController.getImage(LoadedImage.Type.FIRE);
-        Image image2 = null;
-        image2 = ImageController.getImage(LoadedImage.Type.GLOW);
+        Image image = ImageController.getImage(LoadedImage.Type.FIRE);
+        Image image2 = ImageController.getImage(LoadedImage.Type.GLOW);
         
         // https://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/ImageView.html
         ImageView iv = new ImageView( image );
