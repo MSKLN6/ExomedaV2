@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.*;
 import view.*;
@@ -44,14 +44,16 @@ public class ExomedaFXMLController{
     private Button pauseButton;
     private Scene scene;
     private Parent root;
-    private Stage stage;
+    private Stage stage;    
+    private Text scoreText;
+    private Text scoreValue;
     
     @FXML
     public void initialize(){
         
-        playerInputs = new ArrayList<KeyboardInput>();
-        playerControllers = new ArrayList<PlayerController>();
-        enemyControllers = new ArrayList<EnemyController>();
+        playerInputs = new ArrayList<>();
+        playerControllers = new ArrayList<>();
+        enemyControllers = new ArrayList<>();
         
         bulletController = new BulletController(exomedaAnchorPane);
         playerBulletGenerator = new BulletGenerator_Player(bulletController);

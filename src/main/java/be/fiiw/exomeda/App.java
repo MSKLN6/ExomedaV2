@@ -23,7 +23,6 @@ public class App extends Application {
      @Override
      public void start(Stage stage) {
     try {
-//    Parent root = FXMLLoader.load(getClass().getResource("StartingScreenFXML.fxml"));
     Parent root = FXMLLoader.load(getClass().getResource("StartingScreenFXML.fxml"));
         Scene scene = new Scene(root, App.WINDOW_WIDTH, App.WINDOW_HEIGHT);
         stage.setScene(scene);
