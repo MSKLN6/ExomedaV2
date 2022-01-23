@@ -22,12 +22,13 @@ public class ExomedaView extends Region{
     private ArrayList<PlayerView> playerViews;
     private ArrayList<BulletView> bullets;
     private ArrayList<EnemyView> enemyViews;
-    
-    private int i = 0;
+    private ExomedaFXMLController controller;
+    private int score = 0;
 
-    public ExomedaView(Exomeda exomedaModel, ExomedaFXMLController controller) {
+    public ExomedaView(Exomeda exomedaModel, ExomedaFXMLController c) {
         model = exomedaModel;
         spel = new AnchorPane();
+        controller = c;
         playerViews = new ArrayList<PlayerView>();
         enemyViews = new ArrayList<EnemyView>();
         update();
@@ -64,8 +65,6 @@ public class ExomedaView extends Region{
         getChildren().clear();
         getChildren().addAll(spel);
         collision();
-        
-        i += 1;
     }
     
     public void collision(){
@@ -76,10 +75,13 @@ public class ExomedaView extends Region{
                     enemyViews.remove(enemy);
                     bullet.stop();
                     model.redEnemyCount();
-                    System.out.println("" + i);
+                    score += 100;
                 }
             }
         }
-        
+    }
+
+    public int getScore() {
+        return score;
     }
 }

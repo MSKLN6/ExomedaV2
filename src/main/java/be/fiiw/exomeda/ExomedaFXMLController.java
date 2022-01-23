@@ -44,8 +44,9 @@ public class ExomedaFXMLController{
     private Button pauseButton;
     private Scene scene;
     private Parent root;
-    private Stage stage;    
-    private Text scoreText;
+    private Stage stage;
+    
+    @FXML
     private Text scoreValue;
     
     @FXML
@@ -129,6 +130,7 @@ public class ExomedaFXMLController{
         }
         background.update();
         bulletController.update();
+        updateScore();
     }
     
     public void start(){
@@ -163,4 +165,9 @@ public class ExomedaFXMLController{
     public BulletController getBulletController(){
         return bulletController;
     }
+    
+    public void updateScore(){
+        scoreValue.setText(exomedaView.getScore() + "");
+    }
+    
 }
