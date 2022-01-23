@@ -40,21 +40,14 @@ public class BulletController {
     }
     
     public void update(){
-        updateModel();
-        updateView();
-    }
-    
-    public void updateModel() {
-        // synchroniseren van de juiste positie van de bullets
+        // synchroniseren van de juiste positie van de bullets (model)
         synchronized(this.bullets){
             for ( BulletView bv : this.bullets ) {
                 bv.getModel().update();
             }
         }
-    }
-    
-    public void updateView() {
         
+        //updaten van de view
         synchronized(this.bullets){
             synchronized(this.pc){
 
@@ -65,9 +58,6 @@ public class BulletController {
                     b.setPosition( playerController.getView().getCenterPoint() );
                     
                     int velX = b.getVelocity().getX();
-                    int dirX = playerController.getPlayer().getDirection().getX();
-                    
-                    velX = velX * dirX;
                     
                     b.getVelocity().setX(velX);
 
@@ -81,19 +71,24 @@ public class BulletController {
                 this.pc.clear();
             }
 
-            for ( BulletView bv : this.bullets ) {
+            for (BulletView bv : this.bullets) {
                 bv.update();
-                this.checkBulletOffscreen( bv );
+                this.checkBulletOffscreen(bv);
             }
 
-            for ( BulletView toRemove : this.bulletsToRemove ) {
-                this.bullets.remove( toRemove );
-                this.screen.getChildren().remove( toRemove );
+            for (BulletView verwijder : this.bulletsToRemove) {
+                this.bullets.remove(verwijder);
+                this.screen.getChildren().remove(verwijder);
             }
             this.bulletsToRemove.clear();
         
         }
     }
+    
+    public ArrayList<BulletView> getBullets() {
+        return bullets;
+    }
+
     
     private void checkBulletOffscreen( BulletView bullet ) {
         if ( bullet.getModel().getPosition().getY() < - App.WINDOW_HEIGHT ) {
@@ -102,9 +97,5 @@ public class BulletController {
         else if ( bullet.getModel().getPosition().getY() > App.WINDOW_HEIGHT ) {
             this.bulletsToRemove.add( bullet );
         }
-    }
-
-    public ArrayList<BulletView> getBullets() {
-        return bullets;
     }
 }
