@@ -11,6 +11,8 @@ import javafx.scene.input.KeyEvent;
  *
  * @author DaanB
  */
+
+// Deze methode van bewegen is licht afgeleid van BulletHell, maar aangepast naar onze wijze
 public class KeyboardInput extends PlayerInput {
     private KeyCode up;
     private KeyCode down;

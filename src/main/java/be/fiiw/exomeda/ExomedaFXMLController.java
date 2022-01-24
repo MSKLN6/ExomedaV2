@@ -165,6 +165,7 @@ public class ExomedaFXMLController{
         es.scheduleAtFixedRate(eg, 2000, 1000);
     }    
     
+// Deze methode van bewegen is afgeleid van BulletHell, maar aangepast naar onze wijze
     private void keyPressed(KeyEvent event) {
         for ( KeyboardInput input : playerInputs) {
             input.handleKeyPress(event);

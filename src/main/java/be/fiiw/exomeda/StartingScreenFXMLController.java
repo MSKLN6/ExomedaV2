@@ -1,8 +1,6 @@
 package be.fiiw.exomeda;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +28,7 @@ public class StartingScreenFXMLController {
     private Scene scene;
     private Parent root;
    
+    // Source: Brocode - Youtube drie verschillende video's
     public void switchToExomedaFXML(ActionEvent event) throws IOException{
         root = FXMLLoader.load(getClass().getResource("ExomedaFXML.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

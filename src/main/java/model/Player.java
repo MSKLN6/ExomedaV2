@@ -48,6 +48,7 @@ public class Player extends Entity{
         return new Vector( this.getPosition().getX() + getPlayerWidth() / 2, this.getPosition().getY() + getPlayerHeight()/ 2 );
     }
     
+    // Collision idee afgeleid van Jens Vandael
     public boolean collision(Enemy enemy){
         int dx = enemy.getPosition().getX() - position.getX();
         int dy = enemy.getPosition().getY() - position.getY();
