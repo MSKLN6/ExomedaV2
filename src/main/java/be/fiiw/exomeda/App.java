@@ -20,6 +20,7 @@ public class App extends Application {
 
     
      @Override
+     // public void start(Stage stage) throws IOExpetion {
      public void start(Stage stage) {
     try {
     Parent root = FXMLLoader.load(getClass().getResource("StartingScreenFXML.fxml"));
